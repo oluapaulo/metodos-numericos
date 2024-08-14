@@ -15,8 +15,8 @@ V = V(x)
 
 # Construindo o vetor A
 A = ((1/2)*(1/dx**2)) * (1/m[:-2] + 2/m[1:-1] + 1/m[2:] + V[1:-1])
-A = np.insert(A, 0, (1/(2*dx)**2) * (1/m[0] + 2/m[1] + V[0]))
-A = np.append(A, (1/(2*dx)**2) * (1/m[-2] + 2/m[-1] + V[-1]))
+A = np.insert(A, 0, ((1/2)*(1/dx**2)) * (1/m[0] + 2/m[1] + V[0]))
+A = np.append(A, ((1/2)*(1/dx**2)) * (1/m[-2] + 2/m[-1] + V[-1]))
 
 # Construindo os vetores B e C
 B = ((-1/2)*(1/dx**2)) * (1/m[1:-1] + 1/m[2:])
