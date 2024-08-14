@@ -20,10 +20,10 @@ A = np.append(A, (1/(2*dx)**2) * (1/m[-2] + 2/m[-1] + V[-1]))
 
 # Construindo os vetores B e C
 B = ((-1/2)*(1/dx**2)) * (1/m[1:-1] + 1/m[2:])
-B = np.append(B, (-1/(2*dx)**2) * (1/m[-1]))
+B = np.append(B, ((-1/2)*(1/dx**2)) * (1/m[-1]))
 
 C = ((-1/2)*(1/dx**2)) * (1/m[1:-1] + 1/m[:-2])
-C = np.insert(C, 0, (-1/(2*dx)**2) * (1/m[0]))
+C = np.insert(C, 0, ((-1/2)*(1/dx**2)) * (1/m[0]))
 
 # Criando a matriz tridiagonal
 diagonais = [C, A, B]
