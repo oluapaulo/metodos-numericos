@@ -47,7 +47,6 @@ idx = w.argsort()
 w = w[idx]
 m = m[:, idx]
 
-# Normalizando as autofunções
 m = m / np.linalg.norm(m, axis=0)
 
 plt.plot(x, m[:, 0])
