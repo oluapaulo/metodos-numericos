@@ -1,5 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
+
+
 def criar_matriz_diagonal(x, dx, pot, kg):
     n = len(x)
     matriz = np.zeros((n, n))
@@ -7,6 +9,7 @@ def criar_matriz_diagonal(x, dx, pot, kg):
     for i in range(n):
         v1 = pot(x[i])
         m1 = kg(x[i])
+
 
         m2 = kg(x[i] + dx)
 
@@ -28,23 +31,31 @@ def criar_matriz_diagonal(x, dx, pot, kg):
 
 n = 2000
 dx = 1/n
-x = np.linspace(0.2, 1.2, n+1)
+x = np.linspace(0.0, 1.0, n+1)
 
 def pot(x):
-    return 1000*(x - 7/10)**2
+    return (x - 1/2)**2
 
 def kg(x):
-    return x**3
+    return 0.002
+
 
 matriz_resultante = criar_matriz_diagonal(x, dx, pot, kg)
 
 w, m = np.linalg.eig(matriz_resultante)
+idx = w.argsort()
+w = w[idx]
+m = m[:, idx]
+
+# Normalizando as autofunções
+m = m / np.linalg.norm(m, axis=0)
 
 plt.plot(x, m[:, 0])
-#plt.plot(x, m[:, 1])
-#plt.plot(x, m[:, 2])
-#plt.plot(x, m[:, 3])
+plt.plot(x, m[:, 1])
+plt.plot(x, m[:, 2])
+plt.plot(x, m[:, 3])
 plt.show()
+
 
 
 
